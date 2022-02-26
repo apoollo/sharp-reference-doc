@@ -1,0 +1,208 @@
+infomation:
+  version: 0.0.1
+  name: apoollo-oxylua-input
+  description: 该配置文件,用于给用户展示如何定制Sharp配置文件,快速生成项目
+  licenseName: APACHE LICENSE, VERSION 2.0
+  licenseUrl: https://www.apache.org/licenses/LICENSE-2.0.html
+  concatName: liuyulong6
+  concatEmail: apoollo.liu.6@outlook.com
+  concatUrl: https://apoollo.com
+generateApiAutoBindService:
+  fromDatabaseConnection:
+  - username: root
+    password: '123456'
+    domain: 127.0.0.1
+    port: 3306
+    databaseType: mysql
+    deleteStarts: wx,apoollo,as_,spring,gw_
+    deleteSplitors: _,-
+    includes:
+    - catalog: solomon_api
+      tableNames:
+      - wx_activity
+      - app
+      - brand
+    excludes:
+    - catalog: solomon_api
+      tableNames:
+      - api
+      - charge
+      - demand
+      - brand
+    configs:
+    - catalog: solomon_api
+      tables:
+      - className: Jd618Activity
+        classComment: 京东618活动
+        formChineseName: 京东618活动
+        formEnglishName: Jd 618 Activity
+        tableName: wx_activity
+        columns:
+        - propertyClassName: Bigdecimal
+          propertyComment: 活动价格
+          propertyLength: 100
+          propertyIsOwner: false
+          formEnable: true
+          formChineseName: 活动价格
+          formEnglishName: price
+          columnName: price
+declareApiManualBindAService:
+  apis:
+  - id: applicationGlobal
+    name: 应用服务任务执行器
+    description: 用于立即执行应用任务
+    path: /application/global
+    operations:
+    - id: executeSpringBootApplication
+      name: 执行spring boot 应用
+      description: 用户执行spring boot 应用
+      request:
+        id: executeSpringBootApplicationRequest
+        paths:
+        - execute/spring/boot/application
+        headers:
+          Content-Type: application/json
+        mehtods:
+        - POST
+        - GET
+        contentTypes:
+        - application/json
+        inPath:
+          required: true
+          properties:
+          - variableName: targetType
+            className: Integer
+            validators:
+            - name: Min
+              properties:
+                value: '1'
+        inHeader:
+          required: true
+          properties:
+          - variableName: targetType
+            className: Integer
+            validators:
+            - name: Min
+              properties:
+                value: '1'
+        inQuery:
+          required: true
+          properties:
+          - variableName: targetType
+            className: Integer
+            validators:
+            - name: Min
+              properties:
+                value: '1'
+        inCookie:
+          required: true
+          properties:
+          - variableName: targetType
+            className: Integer
+            validators:
+            - name: Min
+              properties:
+                value: '1'
+        inBody:
+          required: true
+          properties:
+          - variableName: targetType
+            className: Integer
+            validators:
+            - name: Min
+              properties:
+                value: '1'
+        enableRequestComposeMethod: OVERRIDE_HTTP_REUQEST
+        enableRequestGeneric: PAGEABLE
+        enablePrivacyRequest: true
+      response:
+        contentTypes:
+        - application/json
+        enableResponseGeneric: PAGEABLE
+    bindServicePackageClassName: com.apoollo.oxylua.service.extentions.ApplicationGlobalTaskExecutionService
+projectCompose:
+  version: 0.0.1-SNAPSHOT-10000
+  groupId: com.apoollo
+  baseArtifactId: apoollo-oxylua
+  basePackageName: com.apoollo.oxylua
+  config:
+    dependencies:
+      enableExistsDependency: true
+      pom:
+        modelVersion: 4.0.0
+        groupId: com.apoollo
+        artifactId: apoollo-dependencies
+        version: 1.0-SNAPSHOT
+        packaging: pom
+        name: apoollo-oxylua-dependencies
+        url: https://apoollo.com
+    parent:
+      enableExistsDependency: false
+      pom:
+        modelVersion: 4.0.0
+        groupId: com.apoollo
+        artifactId: apoollo-oxylua-parent
+        version: 1.0-SNAPSHOT
+        packaging: jar
+        name: apoollo-oxylua-parent
+        url: https://apoollo.com
+    client:
+      enableExistsDependency: false
+      pom:
+        modelVersion: 4.0.0
+        groupId: com.apoollo
+        artifactId: apoollo-oxylua-client
+        version: 1.0-SNAPSHOT
+        packaging: jar
+        name: apoollo-oxylua-client
+        url: https://apoollo.com
+    feginClient:
+      enableExistsDependency: false
+      pom:
+        modelVersion: 4.0.0
+        groupId: com.apoollo
+        artifactId: apoollo-oxylua-feign-client
+        version: 1.0-SNAPSHOT
+        packaging: jar
+        name: apoollo-oxylua-feign-client
+        url: https://apoollo.com
+    service:
+      enableExistsDependency: false
+      pom:
+        modelVersion: 4.0.0
+        groupId: com.apoollo
+        artifactId: apoollo-oxylua-controller
+        version: 1.0-SNAPSHOT
+        packaging: jar
+        name: apoollo-oxylua-controller
+        url: https://apoollo.com
+    controller:
+      enableExistsDependency: false
+      pom:
+        modelVersion: 4.0.0
+        groupId: com.apoollo
+        artifactId: apoollo-oxylua-service
+        version: 1.0-SNAPSHOT
+        packaging: jar
+        name: apoollo-oxylua-service
+        url: https://apoollo.com
+    server:
+      enableExistsDependency: false
+      pom:
+        modelVersion: 4.0.0
+        groupId: com.apoollo
+        artifactId: apoollo-oxylua-server
+        version: 1.0-SNAPSHOT
+        packaging: jar
+        name: apoollo-oxylua-server
+        url: https://apoollo.com
+      applicationYamlConfig:
+        debug: 'true'
+        spring:
+          application:
+            name: apoollo-oxylua-server
+      applicationAutoYamlConfig:
+        debug: 'true'
+        spring:
+          application:
+            name: apoollo-oxylua-server

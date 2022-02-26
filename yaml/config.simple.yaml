@@ -1,0 +1,24 @@
+infomation:
+  version: 0.0.1
+  name: apoollo-oxylua-input
+  description: 该配置文件,用于给用户展示如何定制Sharp配置文件,快速生成项目
+  licenseName: APACHE LICENSE, VERSION 2.0
+  licenseUrl: https://www.apache.org/licenses/LICENSE-2.0.html
+  concatName: liuyulong6
+  concatEmail: apoollo.liu.6@outlook.com
+  concatUrl: https://apoollo.com
+projectCompose:
+  basePackageName: com.apoollo.oxylua
+  version: 0.0.1-SNAPSHOT-10000
+  groupId: com.apoollo
+  baseArtifactId: apoollo-oxylua
+generateApiAutoBindService:
+  fromDatabaseConnection:
+    - 
+      databaseType: mysql
+      domain: 127.0.0.1
+      port: 3306
+      username: root
+      password: 123456
+      deleteStarts: wx,apoollo,as_,spring,gw_
+      deleteSplitors: _,-         
